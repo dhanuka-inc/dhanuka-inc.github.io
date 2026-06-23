@@ -22,8 +22,13 @@
 
     .masthead { padding: 36px 48px 0; text-align: center; }
     .masthead-top { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 18px; }
-    .masthead-logo img { max-width: 80px; height: auto; display: block; }
-    .masthead-logo svg { width: 54px; height: 60px; display: block; }
+    .masthead-logo { transition: transform 0.3s ease, opacity 0.3s ease; }
+    .masthead-logo img { max-width: 300px; width: 100%; height: auto; display: block; }
+    .masthead-logo.scrolled { max-width: 60px; }
+
+    .sticky-logo { position: fixed; top: 20px; left: 20px; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .sticky-logo.visible { opacity: 1; pointer-events: auto; }
+    .sticky-logo img { max-width: 60px; height: auto; display: block; }
     .firm-name { font-family: var(--serif); font-size: 40px; font-weight: 700; letter-spacing: 10px; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 4px; }
     .firm-sub { font-family: var(--body); font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-light); font-style: italic; }
     .masthead-rule-double { border: none; border-top: 3px double var(--ink); margin: 0; }
@@ -102,8 +107,8 @@
 
 <header class="masthead">
   <div class="masthead-top">
-    <div class="masthead-logo">
-      <img src="icon.svg" alt="Dhanuka Inc." />
+    <div class="masthead-logo" id="mainLogo">
+      <img src="logo-full.svg" alt="Dhanuka Inc." />
     </div>
     <div class="masthead-text">
       <div class="firm-name">Dhanuka Inc.</div>
@@ -112,6 +117,10 @@
   </div>
   <hr class="masthead-rule-double">
 </header>
+
+<div class="sticky-logo" id="stickyLogo">
+  <img src="icon.svg" alt="Dhanuka Inc." />
+</div>
 
 <nav>
   <a class="nav-link" href="#">Home</a>
@@ -205,6 +214,26 @@
     <p>Proprietary Firm &nbsp;&middot;&nbsp; India</p>
   </div>
 </footer>
+
+<script>
+  const mainLogo = document.getElementById('mainLogo');
+  const stickyLogo = document.getElementById('stickyLogo');
+  const scrollThreshold = 100;
+
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > scrollThreshold) {
+      // Show sticky logo, shrink main logo
+      stickyLogo.classList.add('visible');
+      mainLogo.classList.add('scrolled');
+    } else {
+      // Hide sticky logo, expand main logo
+      stickyLogo.classList.remove('visible');
+      mainLogo.classList.remove('scrolled');
+    }
+  });
+</script>
 
 </body>
 </html>
