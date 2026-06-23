@@ -26,7 +26,7 @@
     .masthead-logo img { max-width: 800px; width: 95%; height: auto; display: block; }
     .masthead-logo.scrolled img { max-width: 60px; width: 60px; }
 
-    .sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--rule); }
+    .sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--rule); }
     .sticky-header.visible { opacity: 1; pointer-events: auto; }
 
     .sticky-logo { position: relative; display: flex; align-items: center; }
@@ -45,7 +45,7 @@
     .nav-link:first-child { border-left: 1px solid var(--rule); }
     .nav-link:hover { color: var(--accent); }
 
-    .hero { max-width: 740px; margin: 0 auto; padding: 72px 48px 64px; text-align: center; }
+    .hero { max-width: 740px; margin: 0 auto; padding: 32px 48px 64px; text-align: center; }
     .kicker { font-family: var(--body); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 32px; }
     .hero h1 { font-family: var(--serif); font-size: clamp(34px, 4vw, 50px); font-weight: 700; font-style: italic; line-height: 1.18; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 28px; }
     .ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 28px; }
