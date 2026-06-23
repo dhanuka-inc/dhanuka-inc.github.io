@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhanuka Inc. — Consulting &amp; Advisory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:      #F7F3EC;
+      --ink:        #1C1914;
+      --ink-mid:    #4A4540;
+      --ink-light:  #7A7268;
+      --rule:       #C8C2B5;
+      --accent:     #E87272;
+      --serif:      'Playfair Display', Georgia, 'Times New Roman', serif;
+      --body:       'EB Garamond', Georgia, 'Times New Roman', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    .masthead { padding: 36px 48px 0; text-align: center; }
+    .masthead-top { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 18px; }
+    .masthead-logo svg { width: 54px; height: 60px; display: block; }
+    .firm-name { font-family: var(--serif); font-size: 40px; font-weight: 700; letter-spacing: 10px; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+    .firm-sub { font-family: var(--body); font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-light); font-style: italic; }
+    .masthead-rule-double { border: none; border-top: 3px double var(--ink); margin: 0; }
+
+    nav { display: flex; justify-content: center; padding: 11px 0; border-bottom: 1px solid var(--rule); }
+    .nav-link { font-family: var(--body); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0 28px; border-right: 1px solid var(--rule); transition: color 0.2s; }
+    .nav-link:first-child { border-left: 1px solid var(--rule); }
+    .nav-link:hover { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 0 auto; padding: 72px 48px 64px; text-align: center; }
+    .kicker { font-family: var(--body); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 32px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(34px, 4vw, 50px); font-weight: 700; font-style: italic; line-height: 1.18; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 28px; }
+    .ornament { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 28px; }
+    .ornament-line { flex: 1; max-width: 56px; border: none; border-top: 1px solid var(--rule); }
+    .ornament-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+    .hero p { font-size: 19px; line-height: 1.85; color: var(--ink-mid); }
+
+    .section-outer { border-top: 1px solid var(--rule); }
+    .section-outer.dark { background: var(--ink); border-top: none; }
+    .section-inner { max-width: 1060px; margin: 0 auto; padding: 60px 48px; }
+    .section-header { text-align: center; margin-bottom: 52px; }
+    .section-label { display: inline-block; font-family: var(--body); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-light); padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .svc { padding: 0 40px; border-right: 1px solid var(--rule); }
+    .svc:first-child { padding-left: 0; }
+    .svc:last-child { padding-right: 0; border-right: none; }
+    .svc-num { font-family: var(--body); font-size: 13px; font-style: italic; color: var(--accent); margin-bottom: 14px; letter-spacing: 1px; }
+    .svc h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
+    .svc p { font-size: 16px; line-height: 1.82; color: var(--ink-mid); }
+
+    .about-grid { display: grid; grid-template-columns: 240px 1fr; }
+    .about-left { padding-right: 56px; border-right: 1px solid var(--rule); }
+    .about-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .about-role { font-family: var(--body); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-style: italic; margin-bottom: 20px; }
+    .about-divider { border: none; border-top: 1px solid var(--rule); margin-bottom: 20px; }
+    .pull-quote { font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.65; color: var(--ink); }
+    .about-right { padding-left: 56px; }
+    .about-right p { font-size: 18px; line-height: 1.88; color: var(--ink-mid); margin-bottom: 18px; }
+    .about-right p:last-child { margin-bottom: 0; }
+
+    .contact-inner { text-align: center; }
+    .dark .section-label { border-bottom-color: #2E2A26; color: #4A4540; }
+    .contact-h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 40px); font-weight: 700; font-style: italic; color: var(--cream); letter-spacing: -0.5px; margin-bottom: 44px; }
+    .contact-row { display: flex; justify-content: center; }
+    .contact-item { padding: 0 36px; border-right: 1px solid #2E2A26; }
+    .contact-item:first-child { border-left: 1px solid #2E2A26; }
+    .contact-item-label { font-family: var(--body); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #5A554F; font-style: italic; margin-bottom: 6px; }
+    .contact-item-val { font-family: var(--serif); font-size: 15px; color: var(--cream); }
+    .contact-item-val a { color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .contact-item-val a:hover { color: var(--accent); }
+
+    footer { background: var(--ink); border-top: 1px solid #252018; padding: 20px 48px; }
+    .footer-inner { max-width: 1060px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-family: var(--body); font-size: 12px; color: #3A3530; letter-spacing: 0.5px; }
+
+    @media (max-width: 768px) {
+      .masthead { padding: 28px 20px 0; }
+      .firm-name { font-size: 24px; letter-spacing: 5px; }
+      .masthead-top { gap: 16px; }
+      .hero { padding: 52px 20px; }
+      .section-inner { padding: 48px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .svc { padding: 0; border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 36px; margin-bottom: 36px; }
+      .svc:last-child { border-bottom: none; margin-bottom: 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-left { padding-right: 0; border-right: none; padding-bottom: 28px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; }
+      .about-right { padding-left: 0; }
+      .contact-row { flex-direction: column; align-items: center; gap: 28px; }
+      .contact-item { border: none !important; padding: 0; }
+      .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="masthead-logo">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dhanuka Inc.">
+        <path d="M 55,38 C 50,10 80,3 112,5 C 148,7 173,28 176,65 C 181,108 166,162 138,190 C 116,212 80,218 54,208 C 22,195 12,152 18,106 C 22,68 42,52 55,38 Z" fill="#E87272"/>
+        <text x="103" y="122" font-family="'Nunito','Arial Rounded MT Bold',Arial,sans-serif" font-size="84" font-weight="800" fill="white" text-anchor="middle" dominant-baseline="middle" letter-spacing="-2">di</text>
+      </svg>
+    </div>
+    <div class="masthead-text">
+      <div class="firm-name">Dhanuka Inc.</div>
+      <div class="firm-sub">Consulting &amp; Advisory</div>
+    </div>
+  </div>
+  <hr class="masthead-rule-double">
+</header>
+
+<nav>
+  <a class="nav-link" href="#">Home</a>
+  <a class="nav-link" href="#services">Services</a>
+  <a class="nav-link" href="#about">About</a>
+  <a class="nav-link" href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+  <p class="kicker">Est. 2026 &nbsp;&middot;&nbsp; Proprietary Firm</p>
+  <h1>Focused expertise.<br>Measured outcomes.</h1>
+  <div class="ornament">
+    <hr class="ornament-line">
+    <div class="ornament-dot"></div>
+    <hr class="ornament-line">
+  </div>
+  <p>A boutique consulting practice offering independent advisory and technology services to businesses seeking clarity, direction, and lasting results.</p>
+</section>
+
+<section class="section-outer" id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Our Services</span>
+    </div>
+    <div class="services-grid">
+      <div class="svc">
+        <p class="svc-num">I.</p>
+        <h3>Business Advisory</h3>
+        <p>Strategic guidance for organisations navigating growth, transition, or change. Practical counsel grounded in commercial reality and delivered without agenda.</p>
+      </div>
+      <div class="svc">
+        <p class="svc-num">II.</p>
+        <h3>Technology Consulting</h3>
+        <p>Independent assessment and advisory on technology decisions — architecture, platforms, vendor selection, and the execution of digital initiatives of any scale.</p>
+      </div>
+      <div class="svc">
+        <p class="svc-num">III.</p>
+        <h3>Delivery &amp; Operations</h3>
+        <p>Hands-on engagement to improve operational efficiency, process design, and the disciplined execution of complex programmes and projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-outer" id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">About the Practice</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="about-name">Gautam Dhanuka</p>
+        <p class="about-role">Founder &amp; Principal</p>
+        <hr class="about-divider">
+        <p class="pull-quote">"Good advice is precise, timely, and entirely free of agenda."</p>
+      </div>
+      <div class="about-right">
+        <p>Gautam Dhanuka is the founder and principal consultant of Dhanuka Inc., a proprietary consulting practice providing independent advisory services across business strategy, technology, and operations.</p>
+        <p>Engagements are structured for impact — focused, time-bound, and built around the outcomes that matter most to each client. The practice is built on the conviction that the best advice is independent, direct, and practically grounded.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-outer dark" id="contact">
+  <div class="section-inner contact-inner">
+    <div class="section-header">
+      <span class="section-label">Get in Touch</span>
+    </div>
+    <h2 class="contact-h2">Begin a conversation.</h2>
+    <div class="contact-row">
+      <div class="contact-item">
+        <p class="contact-item-label">Email</p>
+        <p class="contact-item-val"><a href="mailto:hello@dhanukainc.com">hello@dhanukainc.com</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Location</p>
+        <p class="contact-item-val">India</p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">LinkedIn</p>
+        <p class="contact-item-val"><a href="https://linkedin.com/in/gautamdhanuka" target="_blank" rel="noopener noreferrer">linkedin.com/in/gautamdhanuka</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Dhanuka Inc. All rights reserved.</p>
+    <p>Proprietary Firm &nbsp;&middot;&nbsp; India</p>
+  </div>
+</footer>
+
+</body>
+</html>
