@@ -77,3 +77,18 @@ No manual deploy step exists. Push = deploy.
 **Change the hero headline:** Find `<section class="hero">`, edit the `<h1>` tag.
 
 **Update the about paragraph:** Find `<section class="section-outer" id="about">`, edit the `<p>` tags inside `.about-right`.
+
+## Sensitive Data (Important)
+
+**There is a `sensitive/` folder in the org root** (not in this repo, at `/Volumes/Projects/dhanuka-inc/sensitive/`).
+
+- ✅ **Safe from GitHub:** The `.gitignore` at org root prevents it from ever being committed.
+- ⚠️ **NOT safe from Claude context:** If you ask Claude to read files from `sensitive/`, they load into conversation context and could leak via transcript exports or reviews.
+
+**Best practice:** Don't ask Claude to read raw files from `sensitive/`. Instead:
+1. Paste specific excerpts or summaries into chat
+2. Ask questions about the content, not the whole file
+3. Be explicit: "Please don't echo this back in your response"
+4. Keep truly secret data (passwords, PAN, bank account numbers) in a password manager, not the filesystem
+
+See `../sensitive/README.md` for full guidelines.
