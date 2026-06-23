@@ -22,9 +22,9 @@
 
     .masthead { padding: 60px 48px 80px; text-align: center; }
     .masthead-top { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 18px; }
-    .masthead-logo { transition: transform 0.3s ease, opacity 0.3s ease; }
+    .masthead-logo { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
     .masthead-logo img { max-width: 800px; width: 95%; height: auto; display: block; }
-    .masthead-logo.scrolled img { max-width: 60px; width: 60px; }
+    .masthead-logo.scrolled { transform: scale(0.075) translateX(-1000px) translateY(-100px); }
 
     .sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--rule); }
     .sticky-header.visible { opacity: 1; pointer-events: auto; }
