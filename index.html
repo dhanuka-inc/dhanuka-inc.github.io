@@ -26,9 +26,16 @@
     .masthead-logo img { max-width: 800px; width: 95%; height: auto; display: block; }
     .masthead-logo.scrolled img { max-width: 60px; width: 60px; }
 
-    .sticky-logo { position: fixed; top: 20px; left: 20px; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-    .sticky-logo.visible { opacity: 1; pointer-events: auto; }
+    .sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--rule); }
+    .sticky-header.visible { opacity: 1; pointer-events: auto; }
+
+    .sticky-logo { position: relative; display: flex; align-items: center; }
     .sticky-logo img { max-width: 60px; height: auto; display: block; }
+
+    .sticky-nav { display: flex; justify-content: center; gap: 0; flex: 1; justify-content: flex-end; }
+    .sticky-nav .nav-link { font-family: var(--body); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0 20px; border-right: 1px solid var(--rule); transition: color 0.2s; }
+    .sticky-nav .nav-link:first-child { border-left: 1px solid var(--rule); }
+    .sticky-nav .nav-link:hover { color: var(--accent); }
     .firm-name { font-family: var(--serif); font-size: 40px; font-weight: 700; letter-spacing: 10px; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 4px; }
     .firm-sub { font-family: var(--body); font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink-light); font-style: italic; }
     .masthead-rule-double { border: none; border-top: 3px double var(--ink); margin: 0; }
@@ -111,14 +118,22 @@
       <img src="logo-full.svg" alt="Dhanuka Inc." />
     </div>
   </div>
-  <hr class="masthead-rule-double">
+  <hr class="masthead-rule-double" style="display: none;">
 </header>
 
-<div class="sticky-logo" id="stickyLogo">
-  <img src="icon.svg" alt="Dhanuka Inc." />
+<div class="sticky-header" id="stickyHeader">
+  <div class="sticky-logo" id="stickyLogo">
+    <img src="icon.svg" alt="Dhanuka Inc." />
+  </div>
+  <nav class="sticky-nav">
+    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </nav>
 </div>
 
-<nav>
+<nav style="display: none;">
   <a class="nav-link" href="#">Home</a>
   <a class="nav-link" href="#services">Services</a>
   <a class="nav-link" href="#about">About</a>
@@ -126,7 +141,7 @@
 </nav>
 
 <section class="hero">
-  <p class="kicker">Est. 2018 &nbsp;&middot;&nbsp; Proprietary Firm</p>
+  <p class="kicker" style="display: none;">Est. 2018 &nbsp;&middot;&nbsp; Proprietary Firm</p>
   <h1>Focused expertise.<br>Measured outcomes.</h1>
   <div class="ornament">
     <hr class="ornament-line">
@@ -213,19 +228,19 @@
 
 <script>
   const mainLogo = document.getElementById('mainLogo');
-  const stickyLogo = document.getElementById('stickyLogo');
+  const stickyHeader = document.getElementById('stickyHeader');
   const scrollThreshold = 100;
 
   window.addEventListener('scroll', function() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
     if (scrollTop > scrollThreshold) {
-      // Show sticky logo, shrink main logo
-      stickyLogo.classList.add('visible');
+      // Show sticky header with logo and nav
+      stickyHeader.classList.add('visible');
       mainLogo.classList.add('scrolled');
     } else {
-      // Hide sticky logo, expand main logo
-      stickyLogo.classList.remove('visible');
+      // Hide sticky header, expand main logo
+      stickyHeader.classList.remove('visible');
       mainLogo.classList.remove('scrolled');
     }
   });
